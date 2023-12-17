@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     private InputPlayer inputJugador;
-    private Transform transformada;
+  //  private Transform transformada;
 
     private float horizontal;
     private float vertical;
@@ -21,6 +21,11 @@ public class PlayerController : MonoBehaviour
 
     private bool canJump;
     public static PlayerController instance;
+
+    public LayerMask layerInteraccion;
+
+    private Salud salud;
+    private NivelDeExperiencia nivelDeExperiencia;
 
     // private bool estaEnSuelo = false;
     // public Transform comprobadorSuelo;
@@ -45,14 +50,18 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        salud = GetComponent<Salud>();
+        nivelDeExperiencia = GetComponent<NivelDeExperiencia>();
         //atributosJugador = GetComponent<Atributos>();
         inputJugador = GetComponent<InputPlayer>();
-        transformada = GetComponent<Transform>();
+      //  transformada = GetComponent<Transform>();
         miRigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
         correrHashCode = Animator.StringToHash("Corriendo");
         atacante = GetComponent<Atacante>();
+
+        PanelAtributos.instance.ActualizarTextoAtributos(atributosJugador, salud, nivelDeExperiencia);
       //  mascaraSuelo = LayerMask.GetMask("Ground");
       //  comprobadorSuelo = transform.Find("Cube");
     //    Debug.Log("comprobadorSuelo: " + comprobadorSuelo);
@@ -84,6 +93,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Atacando", true);//Trigger("Atacar");
         }
 
+        if (inputJugador.inventario)
+        {
+            PanelMenu.instance.AbrirCerrarInventario();
+        }
 
 
             //       if(Input.GetButtonDown("Jump") && estaEnSuelo)
@@ -125,7 +138,19 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
+    public RaycastHit2D[] Interactuar()
+    {
+        RaycastHit2D[] circleCast = Physics2D.CircleCastAll(transform.position, GetComponent<CapsuleCollider2D>().size.x, inputJugador.direccionMirada.normalized, 2f, layerInteraccion);
+        //RaycastHit2D[] circleCast = Physics2D.CircleCastAll(transform.position, GetComponent<CapsuleCollider2D>().size.x, inputJugador.direccionMirada.normalized, 0.0000000000000001f, layerInteraccion);
+        if (circleCast != null)
+        {
+            return circleCast;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
    /* void ManageJump()
     {
