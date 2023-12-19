@@ -12,10 +12,4 @@ public class Enemigo : MonoBehaviour
     {
         return atributos;
     }
-
-    public void EntregarExperiencia()
-    {
-        GameManager.instance.jugador.GetComponent<NivelDeExperiencia>().experiencia += experiencia;
-    }
-
 }

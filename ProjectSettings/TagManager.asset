@@ -3,20 +3,22 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Entrance
+  - RManager
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Interactivo
+  - Minimapa
+  - Muerto
+  - Drop
   - 
   - 
   - 
@@ -40,4 +42,37 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Suelo
+    uniqueID: 1317043711
+    locked: 0
+  - name: Agua
+    uniqueID: 2338243387
+    locked: 0
+  - name: "Monta\xF1a"
+    uniqueID: 2275430231
+    locked: 0
+  - name: Arboles_Plantas
+    uniqueID: 2109646231
+    locked: 0
+  - name: Casas
+    uniqueID: 699147171
+    locked: 0
+  - name: Arboles_Lat
+    uniqueID: 1843977445
+    locked: 0
+  - name: Puentes
+    uniqueID: 462330951
+    locked: 0
+  - name: PlayerElementos
+    uniqueID: 2571212889
+    locked: 0
+  - name: UI
+    uniqueID: 3676049411
+    locked: 0
+  - name: Drop
+    uniqueID: 3074744525
+    locked: 0
+  - name: Minimapa
+    uniqueID: 1262746965
     locked: 0
